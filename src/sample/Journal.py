@@ -3,5 +3,4 @@ class Journal:
         self.students = {}
 
     def addStudent(self, name, surname, id):
-        self.students[id] = {'Name': name, 'Surname': surname, 'Id': id}
         return id
