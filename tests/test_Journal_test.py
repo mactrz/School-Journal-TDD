@@ -8,6 +8,9 @@ class TestJournal(unittest.TestCase):
     def test_add_student(self):
         self.assertEqual(self.tmp.addStudent('Jaroslaw', 'Bogdaniec', 2), 2)
 
+    def test_add_student_len(self):
+        self.tmp.addStudent('Mirek', 'Nowy', 5)
+        self.assertEqual(len(self.tmp.students), 1)
 
     def tearDown(self):
         self.tmp = None
