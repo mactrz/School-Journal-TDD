@@ -12,5 +12,9 @@ class TestJournal(unittest.TestCase):
         self.tmp.addStudent('Mirek', 'Nowy', 5)
         self.assertEqual(len(self.tmp.students), 1)
 
+    def test_add_student_name(self):
+        self.tmp.addStudent('Arek', 'Asdfa', 4)
+        self.assertEqual(self.tmp.students[id]['name'], 'Arek')
+
     def tearDown(self):
         self.tmp = None
