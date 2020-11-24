@@ -24,5 +24,9 @@ class TestJournal(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.tmp.addStudent(123, 'Surname', 3)
 
+    def test_add_student_exception_type2(self):
+        with self.assertRaises(TypeError):
+            self.tmp.addStudent('Name', True, 2)
+
     def tearDown(self):
         self.tmp = None
