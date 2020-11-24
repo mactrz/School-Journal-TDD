@@ -7,8 +7,8 @@ class Journal:
         if type(name) != str or type(surname) != str:
             raise TypeError('Must be a string')
 
-        if type(id) != int:
-            raise TypeError('Id must be a unique number')
+        if type(id) != int or id < 0:
+            raise TypeError('Id must be a unique positive number')
 
         if self.students.get(id, -1) != -1:
             raise Exception('Id must be unique')
