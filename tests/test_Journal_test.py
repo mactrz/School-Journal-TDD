@@ -32,5 +32,6 @@ class TestJournal(unittest.TestCase):
         with self.assertRaises(TypeError):
             self.tmp.addStudent('Name', 'Surname', 'MyId')
 
+
     def tearDown(self):
         self.tmp = None
