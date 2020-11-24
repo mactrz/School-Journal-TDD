@@ -37,5 +37,9 @@ class TestJournal(unittest.TestCase):
             self.tmp.addStudent('Maciej', 'Testowy', 2)
             self.tmp.addStudent('Name', 'Surname', 2)
 
+    def test_add_student_exception_type5(self):
+        with self.assertRaises(Exception):
+            self.tmp.addStudent('Maciej', 'Testowy', -2)
+
     def tearDown(self):
         self.tmp = None
