@@ -23,8 +23,8 @@ class TestJournal(unittest.TestCase):
     ])
     def test_exception_edit_student(self, studid, name, surname):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(calling(self.tmp.editStudent).with_args(studid, name, surname),
-                    raises(Exception))
+        assert_that(calling(self.tmp.editStudent).with_args([studid, name, surname]),
+                    raises(type(Exception('kek'))))
 
     def tearDown(self):
         self.tmp = None
