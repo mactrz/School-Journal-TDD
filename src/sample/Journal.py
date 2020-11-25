@@ -18,6 +18,7 @@ class Journal:
 
     def editStudent(self, studid, name='', surname=''):
         self.students[studid]['name'] = name
+        self.students[studid]['surname'] = surname
 
 
 j = Journal()
