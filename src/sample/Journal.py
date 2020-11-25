@@ -19,7 +19,8 @@ class Journal:
     def editStudent(self, studid, name='', surname=''):
         if name != '':
             self.students[studid]['name'] = name
-        self.students[studid]['surname'] = surname
+        if surname != '':
+            self.students[studid]['surname'] = surname
 
 
 j = Journal()
