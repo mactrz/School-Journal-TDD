@@ -26,5 +26,9 @@ class TestJournal(unittest.TestCase):
         assert_that(calling(self.tmp.editStudent).with_args([studid, name, surname]),
                     raises(type(Exception('kek'))))
 
+    def test_edit_student_has_key(self):
+        self.tmp.addStudent('Jarek', 'Testowy', 2)
+        assert_that(self.tmp.students, has_key(2))
+
     def tearDown(self):
         self.tmp = None
