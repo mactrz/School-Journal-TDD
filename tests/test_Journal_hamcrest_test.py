@@ -23,8 +23,8 @@ class TestJournal(unittest.TestCase):
     ])
     def test_exception_edit_student(self, studid, name, surname):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(calling(self.tmp.editStudent).with_args([studid, name, surname]),
-                    raises(type(Exception('kek'))))
+        assert_that(calling(self.tmp.editStudent).with_args(studid, name, surname),
+                    raises(type(Exception('Mess'))))
 
     def test_edit_student_has_key(self):
         self.tmp.addStudent('Jarek', 'Testowy', 2)
@@ -33,7 +33,11 @@ class TestJournal(unittest.TestCase):
     def test_edit_student_empty_vals(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.editStudent(3, '', '')
-        assert_that(self.tmp.students, all_of(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy'})))
+        assert_that(self.tmp.students, all_of(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy'}), has_key(3)))
+
+    def test_add_student_empty_vals(self):
+        assert_that(calling(self.tmp.addStudent).with_args('', '', 1),
+                    raises(type(Exception('Mess'))))
 
     def tearDown(self):
         self.tmp = None

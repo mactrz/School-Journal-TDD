@@ -17,11 +17,14 @@ class Journal:
         return id
 
     def editStudent(self, studid, name='', surname=''):
+
+        print(type(name), type(surname), type(studid))
         if type(name) != str:
-            raise Exception('Name must be a string')
+            print('KEKEKEKE')
+            raise Exception
         if type(studid) != int:
             raise Exception('Id must be an integer')
-        if type('surname') != str:
+        if type(surname) != str:
             raise Exception('Surname must be a string')
         if not self.students.keys().__contains__(studid):
             raise Exception("Student doesn't exist")
@@ -32,5 +35,4 @@ class Journal:
 
 
 j = Journal()
-j.addStudent('mac', 'kek', 2)
-j.editStudent(2, 'ke', 'ke')
+print(j.addStudent('', '', 2))
