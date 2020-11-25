@@ -41,5 +41,10 @@ class TestJournal(unittest.TestCase):
         with self.assertRaises(Exception):
             self.tmp.addStudent('Maciej', 'Testowy', -2)
 
+    def test_edit_student(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.editStudent('Jarek', studid=3)
+        self.assertEqual(self.tmp.students[3]['name'], 'Jarek')
+
     def tearDown(self):
         self.tmp = None
