@@ -13,6 +13,9 @@ class Journal:
         if self.students.get(id, -1) != -1:
             raise Exception('Id must be unique')
 
+        if name == '' or surname == '':
+            raise Exception('Cannot give empty values')
+
         self.students[id] = {'name': name, 'surname': surname}
         return id
 
@@ -35,4 +38,4 @@ class Journal:
 
 
 j = Journal()
-print(j.addStudent('', '', 2))
+
