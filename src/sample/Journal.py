@@ -16,6 +16,9 @@ class Journal:
         self.students[id] = {'name': name, 'surname': surname}
         return id
 
+    def editStudent(self, studid, name='', surname=''):
+        self.students[studid]['name'] = name
+
 
 j = Journal()
 j.addStudent('mac', 'kek', 2)
