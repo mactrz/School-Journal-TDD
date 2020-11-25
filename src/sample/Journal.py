@@ -17,7 +17,8 @@ class Journal:
         return id
 
     def editStudent(self, studid, name='', surname=''):
-        self.students[studid]['name'] = name
+        if name != '':
+            self.students[studid]['name'] = name
         self.students[studid]['surname'] = surname
 
 
