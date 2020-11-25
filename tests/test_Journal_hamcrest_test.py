@@ -30,5 +30,10 @@ class TestJournal(unittest.TestCase):
         self.tmp.addStudent('Jarek', 'Testowy', 2)
         assert_that(self.tmp.students, has_key(2))
 
+    def test_edit_student_empty_vals(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.editStudent(3, '', '')
+        assert_that(self.tmp.students, all_of(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy'})))
+
     def tearDown(self):
         self.tmp = None
