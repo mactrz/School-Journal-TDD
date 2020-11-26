@@ -41,7 +41,8 @@ class Journal:
         return studid
 
     def addSubject(self, studid, name):
-        self.students[studid]['Subjects'] = {}
+        if not self.students[studid].keys().__contains__('Subjects'):
+            self.students[studid]['Subjects'] = {}
         self.students[studid]['Subjects'][name] = []
         return studid
 
