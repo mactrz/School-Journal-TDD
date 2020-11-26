@@ -35,6 +35,8 @@ class Journal:
             self.students[studid]['surname'] = surname
 
     def deleteStudent(self, studid):
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
         self.students.pop(studid)
         return studid
 
