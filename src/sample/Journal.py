@@ -43,8 +43,13 @@ class Journal:
     def addSubject(self, studid, name):
         if name == '':
             raise Exception('Empty values are invalid')
+
+        if type(name) != str:
+            raise Exception('Subject name must be a string')
+
         if not self.students[studid].keys().__contains__('Subjects'):
             self.students[studid]['Subjects'] = {}
+
         self.students[studid]['Subjects'][name] = []
         return studid
 
