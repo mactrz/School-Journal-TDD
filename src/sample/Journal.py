@@ -60,7 +60,9 @@ class Journal:
         return studid
 
     def editSubject(self, studid, subject, newName):
-        return
+        grades = self.students[studid]['Subjects'][subject]
+        self.addSubject(studid, newName)
+        self.students[studid]['Subjects'][newName] = grades
 
 j = Journal()
 
