@@ -41,6 +41,8 @@ class Journal:
         return studid
 
     def addSubject(self, studid, name):
+        self.students[studid]['Subjects'] = {}
+        self.students[studid]['Subjects'][name] = []
         return studid
 
 j = Journal()
