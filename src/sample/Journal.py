@@ -61,6 +61,7 @@ class Journal:
 
     def editSubject(self, studid, subject, newName):
         grades = self.students[studid]['Subjects'][subject]
+        self.students[studid]['Subjects'].pop(subject)
         self.addSubject(studid, newName)
         self.students[studid]['Subjects'][newName] = grades
 
