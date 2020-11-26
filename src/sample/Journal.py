@@ -34,6 +34,9 @@ class Journal:
         if surname != '':
             self.students[studid]['surname'] = surname
 
+    def deleteStudent(self, studid):
+        return studid
+
 
 j = Journal()
 
