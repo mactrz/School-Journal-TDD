@@ -50,7 +50,7 @@ class TestJournal(unittest.TestCase):
     def test_editSubject1(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.editSubject('Przyroda', 'Matematyka')
+        self.tmp.editSubject(3, 'Przyroda', 'Matematyka')
         assert_that(self.tmp.students[3]['Subjects']).is_length(1)
 
     def tearDown(self):

@@ -59,6 +59,9 @@ class Journal:
         self.students[studid]['Subjects'][name] = []
         return studid
 
+    def editSubject(self, studid, subject, newName):
+        return
+
 j = Journal()
 
 
