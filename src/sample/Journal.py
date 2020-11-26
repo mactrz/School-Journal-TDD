@@ -35,6 +35,7 @@ class Journal:
             self.students[studid]['surname'] = surname
 
     def deleteStudent(self, studid):
+        self.students.pop(studid)
         return studid
 
 
