@@ -40,6 +40,8 @@ class Journal:
         self.students.pop(studid)
         return studid
 
+    def addSubject(self, studid, name):
+        return studid
 
 j = Journal()
 
