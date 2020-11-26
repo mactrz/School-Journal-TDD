@@ -21,9 +21,7 @@ class Journal:
 
     def editStudent(self, studid, name='', surname=''):
 
-        print(type(name), type(surname), type(studid))
         if type(name) != str:
-            print('KEKEKEKE')
             raise Exception
         if type(studid) != int:
             raise Exception('Id must be an integer')

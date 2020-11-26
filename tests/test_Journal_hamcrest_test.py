@@ -39,5 +39,9 @@ class TestJournal(unittest.TestCase):
         assert_that(calling(self.tmp.addStudent).with_args('', '', 1),
                     raises(type(Exception('Mess'))))
 
+    def test_delete_student(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        assert_that(self.tmp.deleteStudent(3), equal_to(3))
+
     def tearDown(self):
         self.tmp = None
