@@ -27,5 +27,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.addSubject(3, 'Przyroda')
         assert_that(self.tmp.students[3]['Subjects']).is_equal_to({'Przyroda':[]})
 
+    def test_addSubject2(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addSubject(3, 'WF')
+        assert_that(self.tmp.students[3]['Subjects']).is_equal_to({'Przyroda':[], 'WF':[]})
+
     def tearDown(self):
         self.tmp = None
