@@ -41,6 +41,12 @@ class Journal:
         return studid
 
     def addSubject(self, studid, name):
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
+
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
         if name == '':
             raise Exception('Empty values are invalid')
 
