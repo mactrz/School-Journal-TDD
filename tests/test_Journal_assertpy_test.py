@@ -53,5 +53,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.editSubject(3, 'Przyroda', 'Matematyka')
         assert_that(self.tmp.students[3]['Subjects']).is_length(1)
 
+    def test_editSubject2(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.editSubject(3, 'Przyroda', 'Matematyka')
+        assert_that(self.tmp.students[3]['Subjects']).contains('Matematyka')
+
     def tearDown(self):
         self.tmp = None
