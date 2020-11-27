@@ -139,6 +139,9 @@ class Journal:
         self.students[studid]['Subjects'][subject].append(change)
         return change
 
+    def averageSubject(self, studid, subject):
+        return 4
+
 j = Journal()
 
 

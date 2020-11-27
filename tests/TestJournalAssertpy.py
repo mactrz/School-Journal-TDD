@@ -101,7 +101,7 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'Przyroda', 3)
         self.tmp.addGrade(3, 'Przyroda', 4)
         self.tmp.addGrade(3, 'Przyroda', 5)
-        assert_that(self.tmp.avarageSubject(3, 'Przyroda')).is_equal_to(4)
+        assert_that(self.tmp.averageSubject(3, 'Przyroda')).is_equal_to(4)
 
     def tearDown(self):
         self.tmp = None
