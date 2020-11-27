@@ -140,7 +140,10 @@ class Journal:
         return change
 
     def averageSubject(self, studid, subject):
-        return 4
+        all = sum(self.students[studid]['Subjects'][subject])
+        count = len(self.students[studid]['Subjects'][subject])
+        return all / count
+
 
 j = Journal()
 
