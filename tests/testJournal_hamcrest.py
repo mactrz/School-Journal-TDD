@@ -67,6 +67,22 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'Przyroda', 4)
         assert_that(self.tmp.students[3]['Subjects']['Przyroda'], has_item(4))
 
+    @parameterized.expand([
+        (2, 'Przyroda', 3),
+        (True, 'Przyroda', 3),
+        (3, '', 3),
+        (3, 'WF', 3),
+        (3, 3, 3),
+        (3, 'Przyroda', True),
+        (3, 'Przyroda', 10)
+    ])
+
+    def test_addGradeParam(self, studid, subject, grade):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        assert_that(calling(self.tmp.addGrade).with_args(studid, subject, grade),
+                    raises(type(Exception('Mess'))))
+
 
     def tearDown(self):
         self.tmp = None
