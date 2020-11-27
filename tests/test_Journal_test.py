@@ -1,6 +1,6 @@
 import unittest
 from src.sample.Journal import Journal
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 
 class TestJournal(unittest.TestCase):
     def setUp(self):
@@ -112,3 +112,31 @@ class TestJournal(unittest.TestCase):
 
     def tearDown(self):
         self.tmp = None
+
+@parameterized_class(('studid', 'subject', 'grade', 'change'), [
+    (True, 'Przyroda', 4, 6),
+    (2, 'Przyroda', 4, 6),
+    (3, 3, 4, 6),
+    (3, 'Przyro', 4, 6),
+    (3, 'Przyroda', 'str', 6),
+    (3, 'Przyroda', 3, 6),
+    (3, 'Przyroda', 4, 8),
+    (3, 'Przyroda', 4, False),
+])
+
+class TestParametrized(unittest.TestCase):
+
+    def test_editGrade_exception(self):
+        self.tmp = Journal()
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.tmp.addGrade(3, 'Przyroda', 5)
+        self.assertRaises(Exception, self.tmp.editGrade, self.studid, self.subject, self.grade, self.change)
+
+    def tearDown(self):
+        self.tmp = None
+
+
+

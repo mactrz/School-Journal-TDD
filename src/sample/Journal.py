@@ -116,6 +116,8 @@ class Journal:
         return grade
 
     def editGrade(self, studid, subject, grade, change):
+        
+
         self.students[studid]['Subjects'][subject].remove(grade)
         self.students[studid]['Subjects'][subject].append(change)
         return change
