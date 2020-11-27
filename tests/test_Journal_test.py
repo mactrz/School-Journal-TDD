@@ -83,5 +83,10 @@ class TestJournal(unittest.TestCase):
         self.tmp.addSubject(3, 'Przyroda')
         self.assertRaises(Exception, self.tmp.deleteSubject, 2, 5)
 
+    def test_editSubject_exception_length(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.assertRaises(Exception, self.tmp.editSubject, 3, 'Przyroda', '')
+
     def tearDown(self):
         self.tmp = None
