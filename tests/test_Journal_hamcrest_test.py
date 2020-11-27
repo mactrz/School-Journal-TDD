@@ -49,6 +49,13 @@ class TestJournal(unittest.TestCase):
         self.tmp.deleteStudent(3)
         assert_that(self.tmp.students, not_(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy'})))
 
+    def test_deleteSubject2(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addSubject(3,'Matematyka')
+        self.tmp.deleteSubject(3, 'Przyroda')
+        assert_that(self.tmp.students[3]['Subjects'], not_(has_entry('Przyroda', [])))
+
 
     def tearDown(self):
         self.tmp = None
