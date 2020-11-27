@@ -2,7 +2,7 @@ class Journal:
     def __init__(self):
         self.students = {}
 
-    def addStudent(self, name, surname, id, subjects=None, comments=None):
+    def addStudent(self, name, surname, id):
 
         if type(name) != str or type(surname) != str:
             raise TypeError('Must be a string')
@@ -16,13 +16,7 @@ class Journal:
         if name == '' or surname == '':
             raise Exception('Cannot give empty values')
 
-        if subjects == None:
-            subjects = {}
-
-        if comments == None:
-            comments = []
-
-        self.students[id] = {'name': name, 'surname': surname, 'Subjects': subjects, 'Comments': comments}
+        self.students[id] = {'name': name, 'surname': surname, 'Subjects': {}, 'Comments': []}
         return id
 
     def editStudent(self, studid, name='', surname=''):
