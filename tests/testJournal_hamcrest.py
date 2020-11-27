@@ -56,6 +56,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.deleteSubject(3, 'Przyroda')
         assert_that(self.tmp.students[3]['Subjects'], not_(has_entry('Przyroda', [])))
 
+    def test_addGrade(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        assert_that(self.tmp.addGrade(3, 'Przyroda', 5), equal_to(5))
+
 
     def tearDown(self):
         self.tmp = None
