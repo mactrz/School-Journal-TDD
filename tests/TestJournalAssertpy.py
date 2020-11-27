@@ -110,10 +110,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'Przyroda', 4)
         self.tmp.addGrade(3, 'Przyroda', 5)
         assert_that(self.tmp.averageSubject(3, 'Przyroda')).is_close_to(4.33, 0.01)
-    
+
     @parameterized.expand([
         (True, 'Przyroda'),
-        (2, 'Przyroda')
+        (2, 'Przyroda'),
+        (3, 'Przyr')
     ])
 
     def test_averageSubject_exception(self, studid, subject):
