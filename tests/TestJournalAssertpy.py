@@ -114,7 +114,8 @@ class TestJournal(unittest.TestCase):
     @parameterized.expand([
         (True, 'Przyroda'),
         (2, 'Przyroda'),
-        (3, 'Przyr')
+        (3, 'Przyr'),
+        (3, 3)
     ])
 
     def test_averageSubject_exception(self, studid, subject):
