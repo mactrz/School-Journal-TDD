@@ -73,5 +73,15 @@ class TestJournal(unittest.TestCase):
         self.tmp.addSubject(3, 'Przyroda')
         self.assertRaises(Exception, self.tmp.deleteSubject, 3, 'None')
 
+    def test_deleteSubject_exception3(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.assertRaises(Exception, self.tmp.deleteSubject, '2', 'Przyroda')
+
+    def test_deleteSubject_exception4(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.assertRaises(Exception, self.tmp.deleteSubject, 2, 5)
+
     def tearDown(self):
         self.tmp = None

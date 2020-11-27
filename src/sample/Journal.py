@@ -79,6 +79,18 @@ class Journal:
         self.students[studid]['Subjects'][newName] = grades
 
     def deleteSubject(self, studid, subject):
+        if not self.students[studid]['Subjects'].keys().__contains__(subject):
+            raise Exception("Subject doesn't exist")
+
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
+
+        if type(subject) != str:
+            raise Exception('Subject name must be a string')
+
         self.students[studid]['Subjects'].pop(subject)
 
 j = Journal()
