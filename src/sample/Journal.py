@@ -75,6 +75,9 @@ class Journal:
         if type(studid) != int:
             raise Exception('Id must be an integer')
 
+        if type(subject) != str:
+            raise Exception('Names must be strings')
+
         grades = self.students[studid]['Subjects'][subject]
         self.students[studid]['Subjects'].pop(subject)
         self.addSubject(studid, newName)
