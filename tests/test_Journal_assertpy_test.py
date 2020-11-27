@@ -65,5 +65,10 @@ class TestJournal(unittest.TestCase):
         self.tmp.editSubject(3, 'Przyroda', 'Matematyka')
         assert_that(self.tmp.students[3]['Subjects']).does_not_contain('Przyroda')
 
+    def test_editSubject_exception1(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(2, 'Przyroda')
+
     def tearDown(self):
         self.tmp = None
