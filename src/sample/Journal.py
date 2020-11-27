@@ -96,6 +96,7 @@ class Journal:
         self.students[studid]['Subjects'].pop(subject)
 
     def addGrade(self, studid, subject, grade):
+        self.students[studid]['Subjects'][subject].append(grade)
         return grade
 
 j = Journal()
