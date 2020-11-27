@@ -78,6 +78,9 @@ class Journal:
         self.addSubject(studid, newName)
         self.students[studid]['Subjects'][newName] = grades
 
+    def deleteSubject(self, studid, subject):
+        self.students[studid]['Subjects'].pop(subject)
+
 j = Journal()
 
 
