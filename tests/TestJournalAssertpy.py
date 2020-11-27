@@ -126,5 +126,10 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'Przyroda', 5)
         assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(studid, subject)
 
+    def test_averageSubject_exception_zero(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(3, 'Przyroda')
+
     def tearDown(self):
         self.tmp = None

@@ -140,8 +140,26 @@ class Journal:
         return change
 
     def averageSubject(self, studid, subject):
+
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
+        if type(subject) != str:
+            raise Exception('Subject name must be a string')
+
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
+
+        if not self.students[studid]['Subjects'].keys().__contains__(subject):
+            raise Exception("Subject doesn't exist")
+
         all = sum(self.students[studid]['Subjects'][subject])
+
         count = len(self.students[studid]['Subjects'][subject])
+
+        if count == 0:
+            raise Exception('This student has no grades')
+
         return all / count
 
 
