@@ -84,5 +84,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
         assert_that(self.tmp.editSubject).raises(Exception).when_called_with('string', 'Przyroda', 'WF')
+
+    def test_editSubject_exception5(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 5, 'WF')
+
     def tearDown(self):
         self.tmp = None

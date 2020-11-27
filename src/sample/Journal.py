@@ -72,6 +72,9 @@ class Journal:
         if not self.students[studid]['Subjects'].keys().__contains__(subject):
             raise Exception("Subject doesn't exist")
 
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
         grades = self.students[studid]['Subjects'][subject]
         self.students[studid]['Subjects'].pop(subject)
         self.addSubject(studid, newName)
