@@ -96,6 +96,22 @@ class Journal:
         self.students[studid]['Subjects'].pop(subject)
 
     def addGrade(self, studid, subject, grade):
+
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
+
+        if type(subject) != str:
+            raise Exception('Subject name must be a string')
+
+        if not self.students[studid]['Subjects'].keys().__contains__(subject):
+            raise Exception("Subject doesn't exist")
+
+        if type(grade) != int or grade > 6 or grade < 1:
+            raise Exception("Grade must be a number betweeen 1 and 6")
+
         self.students[studid]['Subjects'][subject].append(grade)
         return grade
 
