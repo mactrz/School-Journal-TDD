@@ -95,5 +95,13 @@ class TestJournal(unittest.TestCase):
         self.tmp.addSubject(3, 'Przyroda')
         assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 'Przyroda', 10)
 
+    def test_averageSubject(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addGrade(3, 'Przyroda', 3)
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.tmp.addGrade(3, 'Przyroda', 5)
+        assert_that(self.tmp.avarageSubject(3, 'Przyroda')).is_equal_to(4)
+
     def tearDown(self):
         self.tmp = None
