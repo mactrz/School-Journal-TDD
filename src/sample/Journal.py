@@ -115,6 +115,8 @@ class Journal:
         self.students[studid]['Subjects'][subject].append(grade)
         return grade
 
+    def editGrade(self, studid, subject, grade, change):
+        return change
 
 j = Journal()
 

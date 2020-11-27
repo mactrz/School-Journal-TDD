@@ -91,7 +91,8 @@ class TestJournal(unittest.TestCase):
     def test_editGrade(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
-        self.assertEqual(self.tmp.addGrade(3, 'Przyroda', 4, 5), 5)
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.assertEqual(self.tmp.editGrade(3, 'Przyroda', 4, 5), 5)
 
     def tearDown(self):
         self.tmp = None
