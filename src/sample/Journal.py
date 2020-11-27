@@ -70,7 +70,7 @@ class Journal:
             raise Exception("Student doesn't exist")
 
         if not self.students[studid]['Subjects'].keys().__contains__(subject):
-            raise Exception("Student doesn't exist")
+            raise Exception("Subject doesn't exist")
 
         grades = self.students[studid]['Subjects'][subject]
         self.students[studid]['Subjects'].pop(subject)
