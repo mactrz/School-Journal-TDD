@@ -72,6 +72,8 @@ class Journal:
         if type(subject) != str or type(newName) != str:
             raise Exception('Names must be strings')
 
+        if subject == '' or newName == '':
+            raise Exception('Empty values are invalid')
 
         grades = self.students[studid]['Subjects'][subject]
         self.students[studid]['Subjects'].pop(subject)
