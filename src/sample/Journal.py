@@ -115,6 +115,7 @@ class Journal:
         self.students[studid]['Subjects'][subject].append(grade)
         return grade
 
+
 j = Journal()
 
 

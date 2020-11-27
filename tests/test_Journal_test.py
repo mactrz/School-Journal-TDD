@@ -88,5 +88,10 @@ class TestJournal(unittest.TestCase):
         self.tmp.addSubject(3, 'Przyroda')
         self.assertRaises(Exception, self.tmp.editSubject, 3, 'Przyroda', '')
 
+    def test_editGrade(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.assertEqual(self.tmp.addGrade(3, 'Przyroda', 4, 5), 5)
+
     def tearDown(self):
         self.tmp = None
