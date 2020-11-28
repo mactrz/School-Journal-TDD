@@ -206,6 +206,7 @@ class Journal:
         return length
 
     def editComment(self, studid, commentid, newmessage):
+        self.students[studid]['Comments'][commentid] = newmessage
         return self.students[studid]['Comments'][commentid]
 
 
