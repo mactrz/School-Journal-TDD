@@ -222,6 +222,9 @@ class Journal:
         if type(newmessage) != str:
             raise Exception("A comment must be a string")
 
+        if len(newmessage) == 0:
+            raise Exception("A comment cannot be empty")
+
 
         oldmess = self.students[studid]['Comments'][commentid]
 
