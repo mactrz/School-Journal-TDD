@@ -97,7 +97,8 @@ class TestJournal(unittest.TestCase):
     @parameterized.expand([
         (True, 0, 'New', 'Id must be an integer'),
         (2, 0, 'New', "Student doesn't exist"),
-        (3, 1, 'New', "Comment doesn't exist")
+        (3, 1, 'New', "Comment doesn't exist"),
+        (3, '1', 'New', "Comment's id must an integer")
     ])
 
     def test_editComment_exception(self, studid, commentid, new, pattern):
