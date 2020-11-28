@@ -162,6 +162,9 @@ class Journal:
 
         return all / count
 
+    def averageStudent(self, studid):
+        return 3.55
+
 
 j = Journal()
 
