@@ -164,6 +164,8 @@ class Journal:
 
     def averageStudent(self, studid):
 
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
 
         returnVal = 0
         for i in self.students[studid]['Subjects']:
