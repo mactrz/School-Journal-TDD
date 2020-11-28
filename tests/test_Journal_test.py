@@ -111,7 +111,8 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.students[3]['Subjects']['Przyroda'], [4, 5, 5])
 
     def test_addComment(self):
-        self.assertEqual(self.tmp.addComment(3), 'Added a comment for student with id 3')
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.assertEqual(self.tmp.addComment(3, 'Comment'), 0)
 
     def tearDown(self):
         self.tmp = None

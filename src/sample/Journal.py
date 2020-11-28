@@ -16,7 +16,7 @@ class Journal:
         if name == '' or surname == '':
             raise Exception('Cannot give empty values')
 
-        self.students[id] = {'name': name, 'surname': surname, 'Subjects': {}, 'Comments': []}
+        self.students[id] = {'name': name, 'surname': surname, 'Subjects': {}, 'Comments': {}}
         return id
 
     def editStudent(self, studid, name='', surname=''):
@@ -186,6 +186,9 @@ class Journal:
             raise Exception("Student's subjects have no grades")
 
         return returnVal / length
+
+    def addComment(self, studid, message):
+        return 0
 
 
 j = Journal()
