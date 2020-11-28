@@ -114,6 +114,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.assertEqual(self.tmp.addComment(3, 'Comment'), 0)
 
+    def test_addComment1(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addComment(3, 'Comment')
+        self.assertEqual(self.tmp.students[3]['Comments'], {0: 'Comment'})
+
     def tearDown(self):
         self.tmp = None
 
