@@ -174,11 +174,13 @@ class Journal:
             raise Exception("Student has no subjects")
 
         returnVal = 0
+        length = 0
         for i in self.students[studid]['Subjects']:
-           all = sum(self.students[studid]['Subjects'][i])
-           length1 = len(self.students[studid]['Subjects'][i])
-           returnVal += all / length1
-        length = len(self.students[studid]['Subjects'])
+            if len(self.students[studid]['Subjects'][i]) != 0:
+                all = sum(self.students[studid]['Subjects'][i])
+                length1 = len(self.students[studid]['Subjects'][i])
+                returnVal += all / length1
+                length += 1
 
         return returnVal / length
 
