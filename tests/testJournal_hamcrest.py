@@ -99,7 +99,8 @@ class TestJournal(unittest.TestCase):
         (2, 0, 'New', "Student doesn't exist"),
         (3, 1, 'New', "Comment doesn't exist"),
         (3, '1', 'New', "Comment's id must an integer"),
-        (3, 0, 1, "A comment must be a string")
+        (3, 0, 1, "A comment must be a string"),
+        (3, 0, '', "A comment cannot be empty")
     ])
 
     def test_editComment_exception(self, studid, commentid, new, pattern):
