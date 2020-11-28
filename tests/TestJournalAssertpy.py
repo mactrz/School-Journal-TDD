@@ -167,5 +167,12 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'Przyroda', 5)
         assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(True)
 
+    def test_averageStudent_exception2(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.tmp.addGrade(3, 'Przyroda', 5)
+        assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(2).is_equal_to("Student doesn't exist")
+
     def tearDown(self):
         self.tmp = None

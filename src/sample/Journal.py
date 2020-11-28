@@ -167,6 +167,7 @@ class Journal:
         if type(studid) != int:
             raise Exception('Id must be an integer')
 
+
         returnVal = 0
         for i in self.students[studid]['Subjects']:
            all = sum(self.students[studid]['Subjects'][i])
