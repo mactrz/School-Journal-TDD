@@ -153,5 +153,12 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'WF', 4)
         assert_that(self.tmp.averageStudent(3)).is_close_to(3.75, 0.01)
 
+    def test_averageStudent3_one_subject(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.tmp.addGrade(3, 'Przyroda', 5)
+        assert_that(self.tmp.averageStudent(3)).is_close_to(4.5, 0.01)
+
     def tearDown(self):
         self.tmp = None
