@@ -169,7 +169,9 @@ class Journal:
 
         if not self.students.keys().__contains__(studid):
             raise Exception("Student doesn't exist")
-        
+
+        if self.students[studid]['Subjects'] == {}:
+            raise Exception("Student has no subjects")
 
         returnVal = 0
         for i in self.students[studid]['Subjects']:
