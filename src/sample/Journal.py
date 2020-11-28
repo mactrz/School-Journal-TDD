@@ -206,8 +206,12 @@ class Journal:
         return length
 
     def editComment(self, studid, commentid, newmessage):
+
         if type(studid) != int:
             raise Exception('Id must be an integer')
+
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
 
         oldmess = self.students[studid]['Comments'][commentid]
 
