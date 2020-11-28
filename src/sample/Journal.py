@@ -213,6 +213,9 @@ class Journal:
         if not self.students.keys().__contains__(studid):
             raise Exception("Student doesn't exist")
 
+        if not self.students[studid]['Comments'].keys().__contains__(commentid):
+            raise Exception("Comment doesn't exist")
+
         oldmess = self.students[studid]['Comments'][commentid]
 
         self.students[studid]['Comments'][commentid] = newmessage
