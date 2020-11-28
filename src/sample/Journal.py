@@ -219,6 +219,9 @@ class Journal:
         if not self.students[studid]['Comments'].keys().__contains__(commentid):
             raise Exception("Comment doesn't exist")
 
+        if type(newmessage) != str:
+            raise Exception("A comment must be a string")
+
 
         oldmess = self.students[studid]['Comments'][commentid]
 
