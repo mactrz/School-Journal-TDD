@@ -182,7 +182,8 @@ class Journal:
                 returnVal += all / length1
                 length += 1
 
-
+        if length == 0:
+            raise Exception("Student's subjects have no grades")
 
         return returnVal / length
 
