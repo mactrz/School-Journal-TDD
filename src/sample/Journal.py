@@ -163,6 +163,8 @@ class Journal:
         return all / count
 
     def averageStudent(self, studid):
+
+
         returnVal = 0
         for i in self.students[studid]['Subjects']:
            all = sum(self.students[studid]['Subjects'][i])
