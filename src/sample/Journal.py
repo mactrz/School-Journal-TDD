@@ -188,6 +188,19 @@ class Journal:
         return returnVal / length
 
     def addComment(self, studid, message):
+
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
+
+        if type(message) != str:
+            raise Exception("A comment must be a string")
+
+        if len(message) == 0:
+            raise Exception("A comment cannot be empty")
+
         length = len(self.students[studid]['Comments'])
         self.students[studid]['Comments'][length] = message
         return length
