@@ -182,6 +182,8 @@ class Journal:
                 returnVal += all / length1
                 length += 1
 
+
+
         return returnVal / length
 
 
