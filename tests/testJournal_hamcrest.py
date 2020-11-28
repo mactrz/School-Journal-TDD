@@ -93,6 +93,15 @@ class TestJournal(unittest.TestCase):
         given = self.tmp.addComment(3, 'Comment')
         self.tmp.editComment(3, given, 'New')
         assert_that(self.tmp.students[3]['Comments'][given], equal_to('New'))
+    
+    @parameterized.expand([
+        (True, 0, 'New', 'Id must be an integer'),
+    ])
+
+    def test_editComment_exception(self, studid, commentid, new, pattern):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addComment(3, 'Comment')
+        assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
     def tearDown(self):
         self.tmp = None
