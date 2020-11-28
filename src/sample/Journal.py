@@ -188,7 +188,9 @@ class Journal:
         return returnVal / length
 
     def addComment(self, studid, message):
-        return 0
+        length = len(self.students[studid]['Comments'])
+        self.students[studid]['Comments'][length] = message
+        return length
 
 
 j = Journal()
