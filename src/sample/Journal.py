@@ -213,8 +213,12 @@ class Journal:
         if not self.students.keys().__contains__(studid):
             raise Exception("Student doesn't exist")
 
+        if type(commentid) != int:
+            raise Exception("Comment's id must an integer")
+
         if not self.students[studid]['Comments'].keys().__contains__(commentid):
             raise Exception("Comment doesn't exist")
+
 
         oldmess = self.students[studid]['Comments'][commentid]
 
