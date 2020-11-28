@@ -206,8 +206,14 @@ class Journal:
         return length
 
     def editComment(self, studid, commentid, newmessage):
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
+        oldmess = self.students[studid]['Comments'][commentid]
+
         self.students[studid]['Comments'][commentid] = newmessage
-        return self.students[studid]['Comments'][commentid]
+
+        return oldmess
 
 
 j = Journal()

@@ -85,7 +85,7 @@ class TestJournal(unittest.TestCase):
 
     def test_editComment(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
-        given = self.tmp.addComment(3, 'Comment')
+        given = int(self.tmp.addComment(3, 'Comment'))
         assert_that(self.tmp.editComment(3, given, 'New'), equal_to('Comment'))
 
     def test_editComment2(self):
@@ -93,7 +93,7 @@ class TestJournal(unittest.TestCase):
         given = self.tmp.addComment(3, 'Comment')
         self.tmp.editComment(3, given, 'New')
         assert_that(self.tmp.students[3]['Comments'][given], equal_to('New'))
-    
+
     @parameterized.expand([
         (True, 0, 'New', 'Id must be an integer'),
     ])
