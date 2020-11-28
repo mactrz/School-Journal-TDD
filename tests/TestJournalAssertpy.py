@@ -197,3 +197,6 @@ class TestJournal(unittest.TestCase):
 
     def tearDown(self):
         self.tmp = None
+
+if __name__ == '__main__':
+    unittest.main()

@@ -130,6 +130,8 @@ class TestJournal(unittest.TestCase):
         self.tmp.addComment(3, 'Comment')
         self.assertEqual(self.tmp.addComment(3, 'Comment2'), 1)
 
+
+
     def tearDown(self):
         self.tmp = None
 
@@ -160,5 +162,7 @@ class TestParametrized(unittest.TestCase):
     def tearDown(self):
         self.tmp = None
 
+if __name__ == '__main__':
+    unittest.main()
 
 
