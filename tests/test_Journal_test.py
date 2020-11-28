@@ -130,7 +130,17 @@ class TestJournal(unittest.TestCase):
         self.tmp.addComment(3, 'Comment')
         self.assertEqual(self.tmp.addComment(3, 'Comment2'), 1)
 
+    @parameterized.expand([
+        (2, 'Comment2'),
+        (True, 'Comment2'),
+        (3, ''),
+        (3, 3)
+    ])
 
+    def test_addComment_exception(self, studid, message):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addComment(3, 'Comment')
+        self.assertRaises(Exception, self.tmp.addComment, studid, message)
 
     def tearDown(self):
         self.tmp = None
