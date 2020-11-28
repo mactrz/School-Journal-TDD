@@ -110,8 +110,13 @@ class TestJournal(unittest.TestCase):
         self.tmp.editGrade(3, 'Przyroda', 4, 5)
         self.assertEqual(self.tmp.students[3]['Subjects']['Przyroda'], [4, 5, 5])
 
+    def test_addComment(self):
+        self.assertEqual(self.tmp.addComment(3), 'Added a comment for student with id 3')
+
     def tearDown(self):
         self.tmp = None
+
+
 
 @parameterized_class(('studid', 'subject', 'grade', 'change'), [
     (True, 'Przyroda', 4, 6),

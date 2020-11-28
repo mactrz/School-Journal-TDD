@@ -140,7 +140,7 @@ class TestJournal(unittest.TestCase):
         self.tmp.addGrade(3, 'WF', 2)
         self.tmp.addGrade(3, 'WF', 2)
         self.tmp.addGrade(3, 'WF', 4)
-        assert_that(self.tmp.averageStudent(3)).is_close_to(3.55, 0.01)
+        assert_that(self.tmp.averageStudent(3)).is_close_to(3.58, 0.01)
 
     def test_averageStudent2(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
@@ -193,6 +193,7 @@ class TestJournal(unittest.TestCase):
         self.tmp.addSubject(3, 'WF')
         assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(3)\
         .is_equal_to("Student's subjects have no grades")
+
 
     def tearDown(self):
         self.tmp = None
