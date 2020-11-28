@@ -179,5 +179,13 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(3)\
         .is_equal_to('Student has no subjects')
 
+    def test_averageStudent4(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addSubject(3, 'WF')
+        self.tmp.addGrade(3, 'Przyroda', 4)
+        self.tmp.addGrade(3, 'Przyroda', 5)
+        assert_that(self.tmp.averageStudent(3)).is_close_to(4.5)
+
     def tearDown(self):
         self.tmp = None
