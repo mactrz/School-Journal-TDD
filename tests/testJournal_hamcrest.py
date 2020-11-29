@@ -2,6 +2,10 @@ from hamcrest import *
 from src.sample.Journal import Journal
 import unittest
 from parameterized import parameterized
+import csv
+import os
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/import_Journal')
 
 class TestJournal(unittest.TestCase):
     def setUp(self):
@@ -107,6 +111,11 @@ class TestJournal(unittest.TestCase):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addComment(3, 'Comment')
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
+
+    def test_importFile(self):
+        input_file = csv.DictReader(open(my_data_path))
+        self.tmp.importFile(input_file)
+        assert_that(len(self.tmp.students), equal_to(2))
 
     def tearDown(self):
         self.tmp = None

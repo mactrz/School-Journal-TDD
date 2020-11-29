@@ -1,10 +1,13 @@
 import unittest
 from src.sample.Journal import *
+import os
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/Journal_data_test')
 
 class JournalParameterizedFile(unittest.TestCase):
 
     def test_from_file(self):
-      fileTest = open("../data/Journal_data_test")
+      fileTest = open(my_data_path)
       tmp = Journal()
       tmp.addStudent('Maciej', 'Testowy', 3)
       for line in fileTest:
