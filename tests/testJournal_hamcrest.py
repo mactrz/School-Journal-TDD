@@ -141,6 +141,12 @@ class TestJournal(unittest.TestCase):
         assert_that(file.readlines()[4], equal_to('2,Mateusz,Drugi,"{\'WF\': [5, 3]}","{0: \'Comment2\', 1: \'Comment3\'}"\n'))
         file.close()
 
+    def test_exportToFile_empty(self):
+        self.tmp.exportToFile()
+        file = open(my_data_path)
+        assert_that(len(file.readlines()), equal_to(2))
+        file.close()
+
     def tearDown(self):
         self.tmp = None
 

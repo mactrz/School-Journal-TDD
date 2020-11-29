@@ -1,0 +1,5 @@
+id,name,surname,Subjects,Comments
+
+3,Maciej,Testowy,{'Przyroda': [3]},{0: 'Comment'}
+
+2,Mateusz,Drugi,"{'WF': [5, 3]}","{0: 'Comment2', 1: 'Comment3'}"
