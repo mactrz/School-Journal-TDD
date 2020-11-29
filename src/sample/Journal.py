@@ -250,13 +250,7 @@ class Journal:
                 writer.writerow(newOne)
 
 
-if __name__ == '__main__':
-    j = Journal()
-    j.addStudent('Maciej', 'Testowy', 3)
-    j.addSubject(3, 'Przyroda')
-    j.addGrade(3, 'Przyroda', 4)
-    j.addComment(3, 'Comment')
-    j.exportToFile()
+
 
 
 

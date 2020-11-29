@@ -118,11 +118,27 @@ class TestJournal(unittest.TestCase):
     def test_exportToFile(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 3),
+        self.tmp.addGrade(3, 'Przyroda', 3)
         self.tmp.addComment(3, 'Comment')
         self.tmp.exportToFile()
         file = open(my_data_path)
         assert_that(file.readlines()[2], equal_to("3,Maciej,Testowy,{'Przyroda': [3]},{0: 'Comment'}\n"))
+        file.close()
+
+    def test_exportToFile1(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addGrade(3, 'Przyroda', 3),
+        self.tmp.addComment(3, 'Comment')
+        self.tmp.addStudent('Mateusz', 'Drugi', 2)
+        self.tmp.addSubject(2, "WF")
+        self.tmp.addGrade(2, "WF", 5)
+        self.tmp.addGrade(2, "WF", 3)
+        self.tmp.addComment(2, 'Comment2')
+        self.tmp.addComment(2, 'Comment3')
+        self.tmp.exportToFile()
+        file = open(my_data_path)
+        assert_that(file.readlines()[4], equal_to('2,Mateusz,Drugi,"{\'WF\': [5, 3]}","{0: \'Comment2\', 1: \'Comment3\'}"\n'))
         file.close()
 
     def tearDown(self):
