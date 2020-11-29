@@ -147,6 +147,10 @@ class TestJournal(unittest.TestCase):
         assert_that(len(file.readlines()), equal_to(2))
         file.close()
 
+    def test_importFromFile(self):
+        self.tmp.importFromFile()
+        assert_that(len(self.tmp.students), equal_to(2))
+
     def tearDown(self):
         self.tmp = None
 
