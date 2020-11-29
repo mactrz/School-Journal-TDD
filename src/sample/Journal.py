@@ -2,6 +2,7 @@ import csv
 import os
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 my_data_path = os.path.join(THIS_DIR, os.pardir, '../data/export_data')
+my_data_path2 = os.path.join(THIS_DIR, os.pardir, '../data/import_data')
 
 
 
@@ -249,6 +250,25 @@ class Journal:
                 newOne['id'] = data
                 writer.writerow(newOne)
 
+
+    def importFromFile(self):
+        with open(my_data_path2, 'r') as data:
+            for line in csv.DictReader(data):
+                studid = int(line['id'])
+                name = line['name']
+                surname = line['surname']
+                subjects = eval(line['Subjects'])
+                comments = eval(line['Comments'])
+                self.addStudent(name, surname, studid)
+
+                for subject in subjects:
+                    self.addSubject(studid, subject)
+                    for grade in subjects[subject]:
+                        self.addGrade(studid, subject, grade)
+
+                for comment in comments:
+                    self.addComment(studid, comments[comment])
+        data.close()
 
 
 
