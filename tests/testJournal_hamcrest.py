@@ -5,7 +5,7 @@ from parameterized import parameterized
 import csv
 import os
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/import_Journal')
+my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/export_file.csv')
 
 class TestJournal(unittest.TestCase):
     def setUp(self):
@@ -112,10 +112,14 @@ class TestJournal(unittest.TestCase):
         self.tmp.addComment(3, 'Comment')
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
-    def test_importFile(self):
-        input_file = csv.DictReader(open(my_data_path))
-        self.tmp.importFile(input_file)
-        assert_that(len(self.tmp.students), equal_to(2))
+    def test_exportToFile(self):
+        self.tmp.addStudent('Maciej', 'Testowy', 3)
+        self.tmp.addSubject(3, 'Przyroda')
+        self.tmp.addGrade(3, 'Przyroda', 3),
+        self.tmp.addComment(3, 'Comment')
+        self.exportToFile()
+        file = open(my_data_path)
+        assert_that(file.readline(), equal_to('Maciej,Testowy,Przyroda:3,Comment'))
 
     def tearDown(self):
         self.tmp = None

@@ -1,3 +1,5 @@
+import csv
+
 class Journal:
     def __init__(self):
         self.students = {}
