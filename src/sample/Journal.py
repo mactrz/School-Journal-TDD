@@ -1,4 +1,9 @@
 import csv
+import os
+THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+my_data_path = os.path.join(THIS_DIR, os.pardir, '../data/export_data')
+
+
 
 class Journal:
     def __init__(self):
@@ -234,8 +239,25 @@ class Journal:
 
         return oldmess
 
+    def exportToFile(self):
+        open(my_data_path, 'w').close()
+        with open(my_data_path, 'w') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=['id', 'name', 'surname', 'Subjects', 'Comments'])
+            writer.writeheader()
+            for data in self.students:
+                newOne = self.students[data]
+                newOne['id'] = data
+                writer.writerow(newOne)
 
-j = Journal()
+
+if __name__ == '__main__':
+    j = Journal()
+    j.addStudent('Maciej', 'Testowy', 3)
+    j.addSubject(3, 'Przyroda')
+    j.addGrade(3, 'Przyroda', 4)
+    j.addComment(3, 'Comment')
+    j.exportToFile()
+
 
 
 

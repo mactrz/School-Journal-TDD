@@ -2,10 +2,9 @@ from hamcrest import *
 from src.sample.Journal import Journal
 import unittest
 from parameterized import parameterized
-import csv
 import os
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/export_file.csv')
+my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/export_data')
 
 class TestJournal(unittest.TestCase):
     def setUp(self):
@@ -112,14 +111,19 @@ class TestJournal(unittest.TestCase):
         self.tmp.addComment(3, 'Comment')
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
+    def test_vibe(self):
+        file = open(my_data_path, 'r')
+        print(file.readline())
+
     def test_exportToFile(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
         self.tmp.addGrade(3, 'Przyroda', 3),
         self.tmp.addComment(3, 'Comment')
-        self.exportToFile()
+        self.tmp.exportToFile()
         file = open(my_data_path)
-        assert_that(file.readline(), equal_to('Maciej,Testowy,Przyroda:3,Comment'))
+        assert_that(file.readlines()[2], equal_to("3,Maciej,Testowy,{'Przyroda': [3]},{0: 'Comment'}\n"))
+        file.close()
 
     def tearDown(self):
         self.tmp = None
