@@ -111,10 +111,6 @@ class TestJournal(unittest.TestCase):
         self.tmp.addComment(3, 'Comment')
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
-    def test_vibe(self):
-        file = open(my_data_path, 'r')
-        print(file.readline())
-
     def test_exportToFile(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
@@ -148,7 +144,7 @@ class TestJournal(unittest.TestCase):
         file.close()
 
     def test_importFromFile(self):
-        self.tmp.importFromFile()
+        self.tmp.importFromFile('C:\\Users\\Maciek\\Desktop\\TestowanieProjetk1\\projekt-1-mactrz\\data\\import_data')
         assert_that(len(self.tmp.students), equal_to(2))
 
     def tearDown(self):

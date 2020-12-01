@@ -2,7 +2,6 @@ import csv
 import os
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 my_data_path = os.path.join(THIS_DIR, os.pardir, '../data/export_data')
-my_data_path2 = os.path.join(THIS_DIR, os.pardir, '../data/import_data')
 
 
 
@@ -241,7 +240,7 @@ class Journal:
         return oldmess
 
     def exportToFile(self):
-        open(my_data_path, 'w').close()
+        open(my_data_path, 'w+').close()
         with open(my_data_path, 'w') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=['id', 'name', 'surname', 'Subjects', 'Comments'])
             writer.writeheader()
@@ -251,7 +250,8 @@ class Journal:
                 writer.writerow(newOne)
 
 
-    def importFromFile(self):
+    def importFromFile(self, path):
+        my_data_path2 = os.path.abspath(path)
         with open(my_data_path2, 'r') as data:
             for line in csv.DictReader(data):
                 studid = int(line['id'])
