@@ -31,7 +31,7 @@ class TestJournal(unittest.TestCase):
             3: {
                 'name': 'Maciej',
                 'surname': 'Testowy',
-                'Subjects': {'Przyroda':[], 'Matematyka': []},
+                'Subjects': {'Przyroda':[3], 'Matematyka': []},
                 'Comments': {0: 'Comment'}
             }
         }
@@ -117,13 +117,9 @@ class TestJournal(unittest.TestCase):
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
     def test_exportToFile(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 3)
-        self.tmp.addComment(3, 'Comment')
         self.tmp.exportToFile()
         file = open(my_data_path)
-        assert_that(file.readlines()[2], equal_to("3,Maciej,Testowy,{'Przyroda': [3]},{0: 'Comment'}\n"))
+        assert_that(file.readlines()[2], equal_to('0,Ola,Inna,{},{}\n'))
         file.close()
 
     def test_exportToFile1(self):
