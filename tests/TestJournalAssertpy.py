@@ -61,8 +61,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(6, 'New').is_equal_to("Student doesn't exist")
 
     def test_addSubject_exception4(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(True, 'New')
+        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(True, 'New').is_equal_to('Id must be an integer')
 
     def test_editSubject1(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
