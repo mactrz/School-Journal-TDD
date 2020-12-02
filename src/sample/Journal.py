@@ -210,7 +210,7 @@ class Journal:
 
         length = len(self.students[studid]['Comments'])
         self.students[studid]['Comments'][length] = message
-        return length
+        return True
 
     def editComment(self, studid, commentid, newmessage):
 
