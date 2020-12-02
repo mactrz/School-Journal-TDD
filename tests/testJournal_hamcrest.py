@@ -129,6 +129,7 @@ class TestJournal(unittest.TestCase):
         file.close()
 
     def test_exportToFile_empty(self):
+        self.tmp.students = {}
         self.tmp.exportToFile()
         file = open(my_data_path)
         assert_that(len(file.readlines()), equal_to(2))
