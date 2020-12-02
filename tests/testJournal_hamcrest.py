@@ -54,7 +54,6 @@ class TestJournal(unittest.TestCase):
                     raises(type(Exception('Mess'))))
 
     def test_edit_student_has_key(self):
-        self.tmp.addStudent('Jarek', 'Testowy', 2)
         assert_that(self.tmp.students, has_key(2))
 
     def test_edit_student_empty_vals(self):
