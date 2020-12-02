@@ -69,10 +69,8 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.students[3]['name'], 'Maciej')
 
     def test_deleteSubject(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
         self.tmp.deleteSubject(3, 'Przyroda')
-        self.assertEqual(self.tmp.students[3]['Subjects'], {})
+        self.assertEqual(self.tmp.students[3]['Subjects'], {'Matematyka': []})
 
     def test_deleteSubject_exception1(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
