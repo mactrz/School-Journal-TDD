@@ -46,6 +46,10 @@ class Journal:
     def deleteStudent(self, studid):
         if type(studid) != int:
             raise Exception('Id must be an integer')
+
+        if not self.students.keys().__contains__(studid):
+            raise Exception("Student doesn't exist")
+
         self.students.pop(studid)
         return studid
 
