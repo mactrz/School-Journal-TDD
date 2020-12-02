@@ -58,8 +58,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, 3).is_equal_to('Subject name must be a string')
 
     def test_addSubject_exception3(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(2, 'New')
+        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(6, 'New').is_equal_to("Student doesn't exist")
 
     def test_addSubject_exception4(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
