@@ -92,7 +92,7 @@ class TestJournal(unittest.TestCase):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
         self.tmp.addGrade(3, 'Przyroda', 4)
-        self.assertEqual(self.tmp.editGrade(3, 'Przyroda', 4, 5), 5)
+        self.assertEqual(self.tmp.editGrade(3, 'Przyroda', 4, 5), True)
 
     def test_editGrade1(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
