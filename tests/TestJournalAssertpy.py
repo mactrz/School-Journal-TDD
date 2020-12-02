@@ -38,8 +38,8 @@ class TestJournal(unittest.TestCase):
 
     @parameterized.expand([
         (6, "Student doesn't exist"),
-        (True, ),
-        (-3, ),
+        (True, 'Id must be an integer'),
+        (-3, "Student doesn't exist"),
     ])
     def test_exception_deleteStudent(self, arg, mess):
         assert_that(self.tmp.deleteStudent).raises(Exception).when_called_with(arg).is_equal_to(mess)
