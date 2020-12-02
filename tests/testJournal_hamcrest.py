@@ -69,7 +69,6 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.deleteStudent(3), equal_to(3))
 
     def test_delete_student_contains(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.deleteStudent(3)
         assert_that(self.tmp.students, not_(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy'})))
 
