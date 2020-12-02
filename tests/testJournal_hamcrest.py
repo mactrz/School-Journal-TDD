@@ -66,7 +66,6 @@ class TestJournal(unittest.TestCase):
                     raises(type(Exception('Mess')), 'Cannot give empty values'))
 
     def test_delete_student(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         assert_that(self.tmp.deleteStudent(3), equal_to(3))
 
     def test_delete_student_contains(self):
