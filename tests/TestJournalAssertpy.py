@@ -78,9 +78,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.editSubject).raises(Exception).when_called_with(6, 'Przyroda', 'WF').is_equal_to("Student doesn't exist")
 
     def test_editSubject_exception2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 'Matematyka', 'WF')
+        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(1, 'Matematyka', 'WF').is_equal_to("Subject doesn't exist")
 
     def test_editSubject_exception3(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
