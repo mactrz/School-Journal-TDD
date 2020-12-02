@@ -98,13 +98,11 @@ class TestJournal(unittest.TestCase):
                     raises(type(Exception('Mess')), mess))
 
     def test_editComment(self):
-        assert_that(self.tmp.editComment(3, given, 'New'), equal_to(True))
+        assert_that(self.tmp.editComment(3, 0, 'New'), equal_to(True))
 
     def test_editComment2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        given = self.tmp.addComment(3, 'Comment')
-        self.tmp.editComment(3, given, 'New')
-        assert_that(self.tmp.students[3]['Comments'][given], equal_to('New'))
+        self.tmp.editComment(3, 0, 'New')
+        assert_that(self.tmp.students[3]['Comments'][0], equal_to('New'))
 
     @parameterized.expand([
         (True, 0, 'New', 'Id must be an integer'),
