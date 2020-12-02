@@ -16,7 +16,7 @@ class TestJournal(unittest.TestCase):
             1: {
                 'name': 'Aleks',
                 'surname': 'Ciekawy',
-                'Subjects': {'Przyroda': [2]},
+                'Subjects': {'Przyroda': []},
                 'Comments': {0: 'Comment', 1: 'Comment1'}
             },
             2: {
@@ -46,9 +46,7 @@ class TestJournal(unittest.TestCase):
 
 
     def test_addSubject1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        assert_that(self.tmp.students[3]['Subjects']).is_equal_to({'Przyroda':[]})
+        assert_that(self.tmp.students[1]['Subjects']).is_equal_to({'Przyroda':[]})
 
     def test_addSubject2(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
