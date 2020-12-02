@@ -80,15 +80,9 @@ class TestJournal(unittest.TestCase):
     def test_editSubject_exception2(self):
         assert_that(self.tmp.editSubject).raises(Exception).when_called_with(1, 'Matematyka', 'WF').is_equal_to("Subject doesn't exist")
 
-    def test_editSubject_exception3(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 'Matematyka', 'WF')
 
     def test_editSubject_exception4(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        assert_that(self.tmp.editSubject).raises(Exception).when_called_with('string', 'Przyroda', 'WF')
+        assert_that(self.tmp.editSubject).raises(Exception).when_called_with('string', 'Przyroda', 'WF').is_equal_to('Id must be an integer')
 
     def test_editSubject_exception5(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)

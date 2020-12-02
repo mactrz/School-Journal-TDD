@@ -73,14 +73,15 @@ class Journal:
         return studid
 
     def editSubject(self, studid, subject, newName):
+        if type(studid) != int:
+            raise Exception('Id must be an integer')
+
         if not self.students.keys().__contains__(studid):
             raise Exception("Student doesn't exist")
 
         if not self.students[studid]['Subjects'].keys().__contains__(subject):
             raise Exception("Subject doesn't exist")
 
-        if type(studid) != int:
-            raise Exception('Id must be an integer')
 
         if type(subject) != str or type(newName) != str:
             raise Exception('Names must be strings')
