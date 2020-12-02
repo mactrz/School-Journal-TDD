@@ -119,11 +119,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.averageStudent(0)).is_close_to(4.33, 0.01)
 
     def test_averageStudent_exception1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
-        assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(True)
+        assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(True).is_equal_to('Id must be an integer')
 
     def test_averageStudent_exception2(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
