@@ -61,7 +61,6 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.students[3]['name'], 'Jarek')
 
     def test_edit_student2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.editStudent(3, surname='Inny')
         self.assertEqual(self.tmp.students[3]['surname'], 'Inny')
 
