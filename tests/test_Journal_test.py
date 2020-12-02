@@ -88,7 +88,7 @@ class TestJournal(unittest.TestCase):
         self.assertRaises(Exception, self.tmp.editSubject, 3, 'Przyroda', '')
 
     def test_editGrade(self):
-        self.assertEqual(self.tmp.editGrade(3, 'Przyroda', 4, 5), True)
+        self.assertEqual(self.tmp.editGrade(3, 'Przyroda', 3, 5), True)
 
     def test_editGrade1(self):
         self.tmp.editGrade(3, 'Przyroda', 3, 5)
@@ -111,15 +111,13 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.addComment(3, 'Comment2'), 1)
 
     @parameterized.expand([
-        (2, 'Comment2'),
+        (6, 'Comment2'),
         (True, 'Comment2'),
         (3, ''),
         (3, 3)
     ])
 
     def test_addComment_exception(self, studid, message):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addComment(3, 'Comment')
         self.assertRaises(Exception, self.tmp.addComment, studid, message)
 
     def tearDown(self):
@@ -142,11 +140,7 @@ class TestParametrized(unittest.TestCase):
 
     def test_editGrade_exception(self):
         self.tmp = Journal()
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
+        self.tmp.students = {0: {'name': 'Maciej', 'surname': 'Testowy', 'Subjects': {'Przyroda': [4, 4, 5]}, 'Comments': []}}
         self.assertRaises(Exception, self.tmp.editGrade, self.studid, self.subject, self.grade, self.change)
 
     def tearDown(self):
