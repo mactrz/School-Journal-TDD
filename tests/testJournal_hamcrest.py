@@ -50,7 +50,6 @@ class TestJournal(unittest.TestCase):
         (4, 'Maciej', 'Test')
     ])
     def test_exception_edit_student(self, studid, name, surname):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         assert_that(calling(self.tmp.editStudent).with_args(studid, name, surname),
                     raises(type(Exception('Mess'))))
 
