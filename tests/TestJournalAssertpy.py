@@ -37,13 +37,12 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.addStudent('Paweł', 'Wolek')).is_equal_to(4)
 
     @parameterized.expand([
-        (2, ),
+        (6, "Student doesn't exist"),
         (True, ),
         (-3, ),
     ])
-    def test_exception_deleteStudent(self, arg):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(self.tmp.deleteStudent).raises(Exception).when_called_with(arg)
+    def test_exception_deleteStudent(self, arg, mess):
+        assert_that(self.tmp.deleteStudent).raises(Exception).when_called_with(arg).is_equal_to(mess)
 
 
     def test_addSubject1(self):
