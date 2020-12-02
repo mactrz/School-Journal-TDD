@@ -52,8 +52,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.students[2]['Subjects']).is_equal_to({'Przyroda': [], 'WF': []})
 
     def test_addSubject_exception1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, '')
+        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, '').is_equal_to('Empty values are invalid')
 
     def test_addSubject_exception2(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
