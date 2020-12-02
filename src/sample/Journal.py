@@ -115,11 +115,15 @@ class Journal:
         if type(subject) != str:
             raise Exception('Subject name must be a string')
 
+        if len(subject) == 0:
+            raise Exception('Empty values are invalid')
+
         if not self.students[studid]['Subjects'].keys().__contains__(subject):
             raise Exception("Subject doesn't exist")
 
         if type(grade) != int or grade > 6 or grade < 1:
             raise Exception("Grade must be a number betweeen 1 and 6")
+
 
         self.students[studid]['Subjects'][subject].append(grade)
         return True

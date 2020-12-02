@@ -84,18 +84,16 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.students[3]['Subjects']['Przyroda'], has_item(4))
 
     @parameterized.expand([
-        (2, 'Przyroda', 3, "Student doesn't exist"),
+        (6, 'Przyroda', 3, "Student doesn't exist"),
         (True, 'Przyroda', 3, 'Id must be an integer'),
         (3, '', 3, 'Empty values are invalid'),
-        (3, 'WF', 3),
-        (3, 3, 3),
-        (3, 'Przyroda', True),
-        (3, 'Przyroda', 10)
+        (3, 'WF', 3,"Subject doesn't exist"),
+        (3, 3, 3, 'Subject name must be a string'),
+        (3, 'Przyroda', True, "Grade must be a number betweeen 1 and 6"),
+        (3, 'Przyroda', 10,"Grade must be a number betweeen 1 and 6")
     ])
 
     def test_addGradeParam(self, studid, subject, grade, mess):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
         assert_that(calling(self.tmp.addGrade).with_args(studid, subject, grade),
                     raises(type(Exception('Mess')), mess))
 
