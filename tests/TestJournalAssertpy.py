@@ -46,10 +46,9 @@ class TestJournal(unittest.TestCase):
 
 
     def test_addSubject1(self):
-        assert_that(self.tmp.students[1]['Subjects']).is_equal_to({'Matematyka':[]})
+        self.tmp.addSubject(1, 'Matematyka')
+        assert_that(self.tmp.students[1]['Subjects']).is_equal_to({'Przyroda':[], 'Matematyka': []})
 
-    def test_addSubject2(self):
-        assert_that(self.tmp.students[3]['Subjects']).is_equal_to({'Przyroda': [3], 'WF': []})
 
     def test_addSubject_exception1(self):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, '').is_equal_to('Empty values are invalid')
@@ -63,8 +62,6 @@ class TestJournal(unittest.TestCase):
     def test_addSubject_exception4(self):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(True, 'New').is_equal_to('Id must be an integer')
 
-    def test_editSubject1(self):
-        assert_that(self.tmp.students[1]['Subjects']).is_length(1)
 
     def test_editSubject2(self):
         self.tmp.editSubject(1, 'Przyroda', 'Matematyka')
@@ -124,24 +121,9 @@ class TestJournal(unittest.TestCase):
     def test_averageStudent_exception2(self):
         assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(6).is_equal_to("Student doesn't exist")
 
-    def test_averageStudent_exception3(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(3)\
-        .is_equal_to('Student has no subjects')
-
-    def test_averageStudent4(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addSubject(3, 'WF')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
-        assert_that(self.tmp.averageStudent(3)).is_close_to(4.5, 0.01)
 
     def test_averageStudent_exception4(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addSubject(3, 'WF')
-        assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(3)\
+        assert_that(self.tmp.averageStudent).raises(Exception).when_called_with(1)\
         .is_equal_to("Student's subjects have no grades")
 
 
