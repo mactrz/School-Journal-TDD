@@ -114,8 +114,6 @@ class TestJournal(unittest.TestCase):
     ])
 
     def test_editComment_exception(self, studid, commentid, new, pattern):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addComment(3, 'Comment')
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
     def test_exportToFile(self):
