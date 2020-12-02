@@ -99,7 +99,6 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.students[0]['Subjects']['Przyroda'], [4, 5, 5])
 
     def test_addComment(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.assertEqual(self.tmp.addComment(3, 'Comment'), True)
 
     def test_addComment1(self):
