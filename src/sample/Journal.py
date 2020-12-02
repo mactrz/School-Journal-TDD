@@ -120,7 +120,7 @@ class Journal:
             raise Exception("Grade must be a number betweeen 1 and 6")
 
         self.students[studid]['Subjects'][subject].append(grade)
-        return grade
+        return True
 
     def editGrade(self, studid, subject, grade, change):
 
