@@ -67,10 +67,8 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.students[1]['Subjects']).is_length(1)
 
     def test_editSubject2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.editSubject(3, 'Przyroda', 'Matematyka')
-        assert_that(self.tmp.students[3]['Subjects']).contains('Matematyka')
+        self.tmp.editSubject(1, 'Przyroda', 'Matematyka')
+        assert_that(self.tmp.students[1]['Subjects']).contains('Matematyka')
 
     def test_editSubject3(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
