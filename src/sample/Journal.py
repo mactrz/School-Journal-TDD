@@ -144,7 +144,7 @@ class Journal:
 
         self.students[studid]['Subjects'][subject].remove(grade)
         self.students[studid]['Subjects'][subject].append(change)
-        return change
+        return True
 
     def averageSubject(self, studid, subject):
 
