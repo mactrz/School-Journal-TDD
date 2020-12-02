@@ -6,9 +6,35 @@ from parameterized import parameterized
 class TestJournal(unittest.TestCase):
     def setUp(self):
         self.tmp = Journal()
+        self.tmp.students = {
+            0: {
+                'name': 'Ola',
+                'surname': 'Inna',
+                'Subjects': {'Przyroda': [4, 4, 5]},
+                'Comments': {}
+            },
+            1: {
+                'name': 'Aleks',
+                'surname': 'Ciekawy',
+                'Subjects': {'Przyroda': [2]},
+                'Comments': {0: 'Comment', 1: 'Comment1'}
+            },
+            2: {
+                'name': 'Mirek',
+                'surname': 'Testowy',
+                'Subjects': {'WF': []},
+                'Comments': {}
+            },
+            3: {
+                'name': 'Maciej',
+                'surname': 'Testowy',
+                'Subjects': {'Przyroda': [3], 'Matematyka': []},
+                'Comments': {0: 'Comment'}
+            }
+        }
 
     def test_addStudentAssert(self):
-        assert_that(self.tmp.addStudent('Paweł', 'Wolek', 5)).is_equal_to(5)
+        assert_that(self.tmp.addStudent('Paweł', 'Wolek')).is_equal_to(4)
 
     @parameterized.expand([
         (2, ),
