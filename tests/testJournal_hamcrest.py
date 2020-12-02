@@ -46,8 +46,8 @@ class TestJournal(unittest.TestCase):
     @parameterized.expand([
         (True, 'Maciej', 'Test', 'Id must be an integer'),
         (3, 4, 'Test', 'Must be a string'),
-        (3, 'Maciej', False),
-        (4, 'Maciej', 'Test')
+        (3, 'Maciej', False, 'Surname must be a string'),
+        (4, 'Maciej', 'Test', "Student doesn't exist")
     ])
     def test_exception_edit_student(self, studid, name, surname, mess):
         assert_that(calling(self.tmp.editStudent).with_args(studid, name, surname),
@@ -62,8 +62,8 @@ class TestJournal(unittest.TestCase):
                                                             'Subjects': {}, 'Comments': {}}), has_key(3)))
 
     def test_add_student_empty_vals(self):
-        assert_that(calling(self.tmp.addStudent).with_args('', '', 1),
-                    raises(type(Exception('Mess'))))
+        assert_that(calling(self.tmp.addStudent).with_args('', ''),
+                    raises(type(Exception('Mess')), 'Cannot give empty values'))
 
     def test_delete_student(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)

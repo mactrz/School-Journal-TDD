@@ -31,7 +31,7 @@ class Journal:
     def editStudent(self, studid, name='', surname=''):
 
         if type(name) != str:
-            raise Exception
+            raise Exception('Must be a string')
         if type(studid) != int:
             raise Exception('Id must be an integer')
         if type(surname) != str:
