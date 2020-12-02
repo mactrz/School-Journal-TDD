@@ -233,11 +233,9 @@ class Journal:
             raise Exception("A comment cannot be empty")
 
 
-        oldmess = self.students[studid]['Comments'][commentid]
-
         self.students[studid]['Comments'][commentid] = newmessage
 
-        return oldmess
+        return True
 
     def exportToFile(self):
         open(my_data_path, 'w+').close()
