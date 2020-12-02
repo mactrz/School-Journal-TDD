@@ -32,7 +32,7 @@ class TestJournal(unittest.TestCase):
                 'name': 'Maciej',
                 'surname': 'Testowy',
                 'Subjects': {'Przyroda':[], 'Matematyka': []},
-                'Comments': {}
+                'Comments': {0: 'Comment'}
             }
         }
 
@@ -98,8 +98,6 @@ class TestJournal(unittest.TestCase):
                     raises(type(Exception('Mess')), mess))
 
     def test_editComment(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        given = int(self.tmp.addComment(3, 'Comment'))
         assert_that(self.tmp.editComment(3, given, 'New'), equal_to(True))
 
     def test_editComment2(self):
