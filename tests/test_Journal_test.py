@@ -112,7 +112,7 @@ class TestJournal(unittest.TestCase):
 
     def test_addComment(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.assertEqual(self.tmp.addComment(3, 'Comment'), 0)
+        self.assertEqual(self.tmp.addComment(3, 'Comment'), True)
 
     def test_addComment1(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
