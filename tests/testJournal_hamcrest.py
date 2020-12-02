@@ -44,14 +44,14 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.students[3]['surname'], equal_to('Testowy'))
 
     @parameterized.expand([
-        (True, 'Maciej', 'Test'),
-        (3, 4, 'Test'),
+        (True, 'Maciej', 'Test', 'Id must be an integer'),
+        (3, 4, 'Test', 'Must be a string'),
         (3, 'Maciej', False),
         (4, 'Maciej', 'Test')
     ])
-    def test_exception_edit_student(self, studid, name, surname):
+    def test_exception_edit_student(self, studid, name, surname, mess):
         assert_that(calling(self.tmp.editStudent).with_args(studid, name, surname),
-                    raises(type(Exception('Mess'))))
+                    raises(type(Exception('Mess')), mess))
 
     def test_edit_student_has_key(self):
         assert_that(self.tmp.students, has_key(2))
