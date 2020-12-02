@@ -107,9 +107,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(studid, subject).is_equal_to(mess)
 
     def test_averageSubject_exception_zero(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(3, 'Przyroda')
+        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(2, 'Przyroda')
 
     def test_averageStudent1(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
