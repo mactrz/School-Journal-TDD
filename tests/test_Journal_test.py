@@ -36,8 +36,8 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.addStudent('Jaroslaw', 'Bogdaniec'), 4)
 
     def test_add_student_len(self):
-        self.tmp.addStudent('Mirek', 'Nowy', 5)
-        self.assertEqual(len(self.tmp.students), 1)
+        self.tmp.addStudent('Mirek', 'Nowy')
+        self.assertEqual(len(self.tmp.students), 5)
 
     def test_add_student_name(self):
         self.tmp.addStudent('Arek', 'Asdfa', 4)
