@@ -57,7 +57,6 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.students, has_key(2))
 
     def test_edit_student_empty_vals(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.editStudent(3, '', '')
         assert_that(self.tmp.students, all_of(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy',
                                                             'Subjects': {}, 'Comments': {}}), has_key(3)))
