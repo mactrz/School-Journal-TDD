@@ -88,9 +88,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 5, 'WF').is_equal_to('Names must be strings')
 
     def test_editSubject_exception6(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 'Przyroda', 10)
+        assert_that(self.tmp.editSubject).raises(Exception).when_called_with(3, 'Przyroda', 10).is_equal_to('Names must be strings')
 
     def test_averageSubject(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
