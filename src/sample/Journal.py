@@ -9,7 +9,9 @@ class Journal:
     def __init__(self):
         self.students = {}
 
-    def addStudent(self, name, surname, id):
+    def addStudent(self, name, surname):
+
+        id = len(self.students)
 
         if type(name) != str or type(surname) != str:
             raise TypeError('Must be a string')

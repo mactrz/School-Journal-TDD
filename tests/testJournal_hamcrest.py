@@ -9,9 +9,35 @@ my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/export_data')
 class TestJournal(unittest.TestCase):
     def setUp(self):
         self.tmp = Journal()
+        self.tmp.students = {
+            0: {
+                'name': 'Ola',
+                'surname': 'Inna',
+                'Subjects': {},
+                'Comments': {}
+            },
+            1: {
+                'name': 'Aleks',
+                'surname': 'Ciekawy',
+                'Subjects': {'Przyroda':[2]},
+                'Comments': {0:'Comment'}
+            },
+            2: {
+                'name': 'Mirek',
+                'surname': 'Testowy',
+                'Subjects': {'WF': []},
+                'Comments': {}
+            },
+            3: {
+                'name': 'Maciej',
+                'surname': 'Testowy',
+                'Subjects': {},
+                'Comments': {}
+            }
+        }
 
     def test_addStudentHam(self):
-        assert_that(self.tmp.addStudent('Aleks', 'Mareks', 3), equal_to(3))
+        assert_that(self.tmp.addStudent('Aleks', 'Mareks'), equal_to(3))
 
     def test_edit_student4(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
