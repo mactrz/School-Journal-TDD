@@ -94,12 +94,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.averageSubject(0, 'Przyroda')).is_close_to(4.33, 0.01)
 
     def test_averageSubject1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
-        assert_that(self.tmp.averageSubject(3, 'Przyroda')).is_close_to(4.33, 0.01)
+        assert_that(self.tmp.averageSubject(3, 'Przyroda')).is_close_to(3, 0.01)
 
     @parameterized.expand([
         (True, 'Przyroda'),
