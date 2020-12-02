@@ -40,36 +40,23 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(len(self.tmp.students), 5)
 
     def test_add_student_name(self):
-        self.tmp.addStudent('Arek', 'Asdfa', 4)
+        self.tmp.addStudent('Arek', 'Asdfa')
         self.assertEqual(self.tmp.students[4]['name'], 'Arek')
 
     def test_add_student_surname(self):
-        self.tmp.addStudent('Arek', 'Asdfa', 4)
+        self.tmp.addStudent('Arek', 'Asdfa')
         self.assertEqual(self.tmp.students[4]['surname'], 'Asdfa')
 
     def test_add_student_exception_type1(self):
         with self.assertRaises(TypeError):
-            self.tmp.addStudent(123, 'Surname', 3)
+            self.tmp.addStudent(123, 'Surname')
 
     def test_add_student_exception_type2(self):
         with self.assertRaises(TypeError):
-            self.tmp.addStudent('Name', True, 2)
+            self.tmp.addStudent('Name', True)
 
-    def test_add_student_exception_type3(self):
-        with self.assertRaises(TypeError):
-            self.tmp.addStudent('Name', 'Surname', 'MyId')
-
-    def test_add_student_exception_type4(self):
-        with self.assertRaises(Exception):
-            self.tmp.addStudent('Maciej', 'Testowy', 2)
-            self.tmp.addStudent('Name', 'Surname', 2)
-
-    def test_add_student_exception_type5(self):
-        with self.assertRaises(Exception):
-            self.tmp.addStudent('Maciej', 'Testowy', -2)
 
     def test_edit_student1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.editStudent(3, 'Jarek')
         self.assertEqual(self.tmp.students[3]['name'], 'Jarek')
 

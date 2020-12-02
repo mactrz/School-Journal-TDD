@@ -258,12 +258,11 @@ class Journal:
         my_data_path2 = os.path.abspath(path)
         with open(my_data_path2, 'r') as data:
             for line in csv.DictReader(data):
-                studid = int(line['id'])
                 name = line['name']
                 surname = line['surname']
                 subjects = eval(line['Subjects'])
                 comments = eval(line['Comments'])
-                self.addStudent(name, surname, studid)
+                studid = self.addStudent(name, surname)
 
                 for subject in subjects:
                     self.addSubject(studid, subject)

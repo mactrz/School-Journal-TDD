@@ -59,7 +59,7 @@ class TestJournal(unittest.TestCase):
     def test_edit_student_empty_vals(self):
         self.tmp.editStudent(3, '', '')
         assert_that(self.tmp.students, all_of(has_entry(3, {'name': 'Maciej', 'surname': 'Testowy',
-                                                            'Subjects': {}, 'Comments': {}}), has_key(3)))
+                                                            'Subjects': {'Przyroda': [3], 'Matematyka': []}, 'Comments': {0: 'Comment'}}), has_key(3)))
 
     def test_add_student_empty_vals(self):
         assert_that(calling(self.tmp.addStudent).with_args('', ''),
@@ -106,7 +106,7 @@ class TestJournal(unittest.TestCase):
 
     @parameterized.expand([
         (True, 0, 'New', 'Id must be an integer'),
-        (2, 0, 'New', "Student doesn't exist"),
+        (6, 0, 'New', "Student doesn't exist"),
         (3, 1, 'New', "Comment doesn't exist"),
         (3, '1', 'New', "Comment's id must an integer"),
         (3, 0, 1, "A comment must be a string"),
@@ -137,7 +137,7 @@ class TestJournal(unittest.TestCase):
 
     def test_importFromFile(self):
         self.tmp.importFromFile('C:\\Users\\Maciek\\Desktop\\TestowanieProjetk1\\projekt-1-mactrz\\data\\import_data')
-        assert_that(len(self.tmp.students), equal_to(2))
+        assert_that(len(self.tmp.students), equal_to(6))
 
     def tearDown(self):
         self.tmp = None
