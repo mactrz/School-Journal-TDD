@@ -64,10 +64,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(True, 'New').is_equal_to('Id must be an integer')
 
     def test_editSubject1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.editSubject(3, 'Przyroda', 'Matematyka')
-        assert_that(self.tmp.students[3]['Subjects']).is_length(1)
+        assert_that(self.tmp.students[1]['Subjects']).is_length(1)
 
     def test_editSubject2(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
