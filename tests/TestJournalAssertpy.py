@@ -97,19 +97,14 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.averageSubject(3, 'Przyroda')).is_close_to(3, 0.01)
 
     @parameterized.expand([
-        (True, 'Przyroda'),
-        (2, 'Przyroda'),
-        (3, 'Przyr'),
-        (3, 3)
+        (True, 'Przyroda', 'Id must be an integer'),
+        (6, 'Przyroda', "Student doesn't exist"),
+        (0, 'Przyr', "Subject doesn't exist"),
+        (0, 3, 'Subject name must be a string')
     ])
 
-    def test_averageSubject_exception(self, studid, subject):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
-        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(studid, subject)
+    def test_averageSubject_exception(self, studid, subject, mess):
+        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(studid, subject).is_equal_to(mess)
 
     def test_averageSubject_exception_zero(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
