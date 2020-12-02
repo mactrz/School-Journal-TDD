@@ -76,8 +76,6 @@ class TestJournal(unittest.TestCase):
         self.assertRaises(Exception, self.tmp.deleteSubject, 2, 'Przyroda')
 
     def test_deleteSubject_exception2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
         self.assertRaises(Exception, self.tmp.deleteSubject, 3, 'None')
 
     def test_deleteSubject_exception3(self):
