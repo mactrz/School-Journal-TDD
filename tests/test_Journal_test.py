@@ -9,7 +9,7 @@ class TestJournal(unittest.TestCase):
             0: {
                 'name': 'Ola',
                 'surname': 'Inna',
-                'Subjects': {},
+                'Subjects': {'Przyroda': [4,4,5]},
                 'Comments': {}
             },
             1: {
@@ -95,13 +95,8 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.students[3]['Subjects']['Przyroda'], [5])
 
     def test_editGrade2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
-        self.tmp.editGrade(3, 'Przyroda', 4, 5)
-        self.assertEqual(self.tmp.students[3]['Subjects']['Przyroda'], [4, 5, 5])
+        self.tmp.editGrade(0, 'Przyroda', 4, 5)
+        self.assertEqual(self.tmp.students[0]['Subjects']['Przyroda'], [4, 5, 5])
 
     def test_addComment(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
