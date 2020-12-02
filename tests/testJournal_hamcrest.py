@@ -84,20 +84,20 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.students[3]['Subjects']['Przyroda'], has_item(4))
 
     @parameterized.expand([
-        (2, 'Przyroda', 3),
-        (True, 'Przyroda', 3),
-        (3, '', 3),
+        (2, 'Przyroda', 3, "Student doesn't exist"),
+        (True, 'Przyroda', 3, 'Id must be an integer'),
+        (3, '', 3, 'Empty values are invalid'),
         (3, 'WF', 3),
         (3, 3, 3),
         (3, 'Przyroda', True),
         (3, 'Przyroda', 10)
     ])
 
-    def test_addGradeParam(self, studid, subject, grade):
+    def test_addGradeParam(self, studid, subject, grade, mess):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.addSubject(3, 'Przyroda')
         assert_that(calling(self.tmp.addGrade).with_args(studid, subject, grade),
-                    raises(type(Exception('Mess'))))
+                    raises(type(Exception('Mess')), mess))
 
     def test_editComment(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
