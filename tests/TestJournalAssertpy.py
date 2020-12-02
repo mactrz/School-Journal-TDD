@@ -22,7 +22,7 @@ class TestJournal(unittest.TestCase):
             2: {
                 'name': 'Mirek',
                 'surname': 'Testowy',
-                'Subjects': {'Przyroda': [], 'WF': []},
+                'Subjects': {'Przyroda': [4,5], 'WF': [2,2,4]},
                 'Comments': {}
             },
             3: {
@@ -46,10 +46,10 @@ class TestJournal(unittest.TestCase):
 
 
     def test_addSubject1(self):
-        assert_that(self.tmp.students[1]['Subjects']).is_equal_to({'Przyroda':[]})
+        assert_that(self.tmp.students[1]['Subjects']).is_equal_to({'Matematyka':[]})
 
     def test_addSubject2(self):
-        assert_that(self.tmp.students[2]['Subjects']).is_equal_to({'Przyroda': [], 'WF': []})
+        assert_that(self.tmp.students[3]['Subjects']).is_equal_to({'Przyroda': [3], 'WF': []})
 
     def test_addSubject_exception1(self):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, '').is_equal_to('Empty values are invalid')
@@ -107,18 +107,10 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(studid, subject).is_equal_to(mess)
 
     def test_averageSubject_exception_zero(self):
-        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(2, 'Przyroda')
+        assert_that(self.tmp.averageSubject).raises(Exception).when_called_with(1, 'Przyroda')
 
     def test_averageStudent1(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addSubject(3, 'Przyroda')
-        self.tmp.addGrade(3, 'Przyroda', 4)
-        self.tmp.addGrade(3, 'Przyroda', 5)
-        self.tmp.addSubject(3, 'WF')
-        self.tmp.addGrade(3, 'WF', 2)
-        self.tmp.addGrade(3, 'WF', 2)
-        self.tmp.addGrade(3, 'WF', 4)
-        assert_that(self.tmp.averageStudent(3)).is_close_to(3.58, 0.01)
+        assert_that(self.tmp.averageStudent(2)).is_close_to(3.58, 0.01)
 
     def test_averageStudent2(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
