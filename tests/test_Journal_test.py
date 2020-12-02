@@ -16,7 +16,7 @@ class TestJournal(unittest.TestCase):
                 'name': 'Aleks',
                 'surname': 'Ciekawy',
                 'Subjects': {'Przyroda': [2]},
-                'Comments': {0: 'Comment'}
+                'Comments': {0: 'Comment', 1: 'Comment1'}
             },
             2: {
                 'name': 'Mirek',
@@ -105,10 +105,7 @@ class TestJournal(unittest.TestCase):
         self.assertEqual(self.tmp.students[3]['Comments'], {0: 'Comment'})
 
     def test_addComment2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        self.tmp.addComment(3, 'Comment')
-        self.tmp.addComment(3, 'Comment2')
-        self.assertEqual(len(self.tmp.students[3]['Comments']), 2)
+        self.assertEqual(len(self.tmp.students[1]['Comments']), 2)
 
     def test_addComment3(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
