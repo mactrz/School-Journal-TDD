@@ -40,7 +40,6 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.addStudent('Aleks', 'Mareks'), equal_to(4))
 
     def test_edit_student4(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
         self.tmp.editStudent(3, 'Inny')
         assert_that(self.tmp.students[3]['surname'], equal_to('Testowy'))
 
