@@ -79,12 +79,12 @@ class Journal:
         if not self.students.keys().__contains__(studid):
             raise Exception("Student doesn't exist")
 
+        if type(subject) != str or type(newName) != str:
+            raise Exception('Names must be strings')
+
         if not self.students[studid]['Subjects'].keys().__contains__(subject):
             raise Exception("Subject doesn't exist")
 
-
-        if type(subject) != str or type(newName) != str:
-            raise Exception('Names must be strings')
 
         if subject == '' or newName == '':
             raise Exception('Empty values are invalid')
