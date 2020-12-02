@@ -55,8 +55,7 @@ class TestJournal(unittest.TestCase):
         assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, '').is_equal_to('Empty values are invalid')
 
     def test_addSubject_exception2(self):
-        self.tmp.addStudent('Maciej', 'Testowy', 3)
-        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, 3)
+        assert_that(self.tmp.addSubject).raises(Exception).when_called_with(3, 3).is_equal_to('Subject name must be a string')
 
     def test_addSubject_exception3(self):
         self.tmp.addStudent('Maciej', 'Testowy', 3)
