@@ -1,8 +1,8 @@
 import csv
 import os
+
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 my_data_path = os.path.join(THIS_DIR, os.pardir, '../data/export_data')
-
 
 
 class Journal:
@@ -85,7 +85,6 @@ class Journal:
         if not self.students[studid]['Subjects'].keys().__contains__(subject):
             raise Exception("Subject doesn't exist")
 
-
         if subject == '' or newName == '':
             raise Exception('Empty values are invalid')
 
@@ -128,7 +127,6 @@ class Journal:
 
         if type(grade) != int or grade > 6 or grade < 1:
             raise Exception("Grade must be a number betweeen 1 and 6")
-
 
         self.students[studid]['Subjects'][subject].append(grade)
         return True
@@ -243,21 +241,20 @@ class Journal:
         if len(newmessage) == 0:
             raise Exception("A comment cannot be empty")
 
-
         self.students[studid]['Comments'][commentid] = newmessage
 
         return True
 
     def exportToFile(self):
         open(my_data_path, 'w+').close()
-        with open(my_data_path, 'w') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=['id', 'name', 'surname', 'Subjects', 'Comments'])
-            writer.writeheader()
-            for data in self.students:
-                newOne = self.students[data]
-                newOne['id'] = data
-                writer.writerow(newOne)
-
+        file = open(my_data_path, 'w')
+        writer = csv.DictWriter(file, fieldnames=['id', 'name', 'surname', 'Subjects', 'Comments'])
+        writer.writeheader()
+        for data in self.students:
+            newOne = self.students[data]
+            newOne['id'] = data
+            writer.writerow(newOne)
+        file.close()
 
     def importFromFile(self, path):
         my_data_path2 = os.path.abspath(path)
@@ -277,9 +274,3 @@ class Journal:
                 for comment in comments:
                     self.addComment(studid, comments[comment])
         data.close()
-
-
-
-
-
-

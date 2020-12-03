@@ -3,7 +3,7 @@ from src.sample.Journal import Journal
 import unittest
 from parameterized import parameterized
 import os
-from testfixtures import tempdir, compare
+from unittest.mock import patch, mock_open
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 my_data_path = os.path.join(THIS_DIR, os.pardir, 'data/export_data')
 
@@ -117,12 +117,6 @@ class TestJournal(unittest.TestCase):
     def test_editComment_exception(self, studid, commentid, new, pattern):
         assert_that(calling(self.tmp.editComment).with_args(studid, commentid, new), raises(Exception, pattern))
 
-    @tempdir()
-    def test_exportToFile(self, dir):
-        self.tmp.exportToFile(dir.path)
-        file = open(dir.path)
-        assert_that(file.readlines()[2], equal_to('0,Ola,Inna,{},{}\n'))
-        file.close()
 
     def test_exportToFile1(self):
         self.tmp.exportToFile()

@@ -1,5 +1,1 @@
 id,name,surname,Subjects,Comments
-0,Ola,Inna,{},{}
-1,Aleks,Ciekawy,{'Przyroda': [2]},{0: 'Comment'}
-2,Mirek,Testowy,{'WF': []},{}
-3,Maciej,Testowy,"{'Przyroda': [3], 'Matematyka': []}",{0: 'Comment'}
