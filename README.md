@@ -1,4 +1,4 @@
-# A sample Python project
+# School Journal TDD
 
 Building a school journal using TDD
 Maciej Trząsalski
