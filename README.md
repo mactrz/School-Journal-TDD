@@ -1,7 +1,7 @@
 # A sample Python project
 
-Unit tests project Maciej Trząsalski
-School Journal zad10
+Building a school journal using TDD
+Maciej Trząsalski
 
 [packaging guide]: https://packaging.python.org
 [distribution tutorial]: https://packaging.python.org/tutorials/packaging-projects/
