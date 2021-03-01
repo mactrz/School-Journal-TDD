@@ -1,6 +1,6 @@
 # School Journal TDD
 
-Building a school journal using TDD
+Building a school journal using TDD |
 Maciej Trząsalski
 
 [packaging guide]: https://packaging.python.org
